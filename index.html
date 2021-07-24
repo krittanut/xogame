@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <!-- <h1>เปลี่ยนขนาด : </h1> -->
-
+    <script src = "test.js" ></script>
 </head>
 
 <body class='content'>
@@ -40,7 +40,7 @@
                 // alert(num_size);
                 addmorerow(num_xo);
                 for(let i = 0 ; i < num_xo**2 ; i++) {
-                    board[i] = "";
+                    board[i] = 0;
                 }
                 // alert(board.length)
                 // alert(board[board.length-1])
@@ -51,7 +51,7 @@
             tb.innerHTML = "";
             // alert(n);
             // var tb = document.createElement('table')
-            var count = 0;
+            var count = -1;
             for (var a = 0; a < n; a++) {
                 var tr = document.createElement('tr');
                 for (var i = 1; i <= n; i++) {
@@ -75,13 +75,23 @@
         }
 
         function checkclick(id) {
-            alert("test");
+            // alert("test");
+            var textid = id ; 
             var selectbox = document.getElementById(id);
+            alert(id);
             selectbox.innerHTML = "X";
-            board[id] = "X";
-
+            // board[id] = "X";
+            console.log(id[2]);
+            updateboard(id[2]) ; 
+            // checkwin(board,id[2]);
             // debug
+            // alert(board[id]);
+        }
+
+        function updateboard(id) {
+            board[id] = 1;
             alert(board[id]);
+            console.log(board);
         }
 
         function botmove(space) {
@@ -89,7 +99,7 @@
             // for(let i )
         }
 
-
+        // alert(checkwin(test,8)) ; 
     </script>
 </body>
 

@@ -18,12 +18,12 @@ function availableMove(board) {
 }
 // X == 1
 // O == -1
-var test = [ -1, 1, 1,
-             -1, -1, 1,
-             1, -1, -1];
+// not pick == 0 
+// var test = [ -1, 1, 1,
+//              -1, -1, 1,
+//              1, -1, -1];
 
-checkwin(test,8);
-var prev ; 
+// checkwin(test,8);
 
 function checkwin(checkboard,num) {
     var vertical = 0;
@@ -47,13 +47,15 @@ function checkwin(checkboard,num) {
             diago+=test[i*4];
             console.log(diago);
 
-            if(vertical  == 3 || horizon == 3 || diago == 3 ){
-                console.log("X WINNNN"); 
-            }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
-                console.log("O WINNN");
-            }else {
-                console.log("No one win in thsi move");
-            }
+            // if(vertical  == 3 || horizon == 3 || diago == 3 ){
+            //     console.log("X WINNNN"); 
+            // }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
+            //     console.log("O WINNN");
+            // }else {
+            //     console.log("No one win in thsi move");
+            // }
+            whowin(vertical,horizon,diago);
+
             }
         }
     else if(num/sizexo == sizexo-1 ) {
@@ -75,14 +77,17 @@ function checkwin(checkboard,num) {
             diago+=test[(i+1)*(sizexo-1)];
             console.log("Check number   :  " + (i+1)*(sizexo-1) );
             console.log(diago);  
-            if(vertical  == 3 || horizon == 3 || diago == 3 ){
-                console.log("X WINNNN"); 
-            }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
-                console.log("O WINNN");
-            }else{
-                console.log("Noone win in this move");
-            }
 
+            // if(vertical  == 3 || horizon == 3 || diago == 3 ){
+            //     console.log("X WINNNN"); 
+            // }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
+            //     console.log("O WINNN");
+            // }else{
+            //     console.log("Noone win in this move");
+            // }ical,horizon,diago);
+            whowin(vertical,horizon,diago);
+
+        
         }
     }else if(num == sizexo-1) {
         //check right top conner
@@ -101,13 +106,15 @@ function checkwin(checkboard,num) {
             diago+=test[(i+1)*(sizexo-1)];
             console.log("Check number   :  " + (i+1)*(sizexo-1) );
             console.log(diago);  
-            if(vertical  == 3 || horizon == 3 || diago == 3 ){
-                console.log("X WINNNN"); 
-            }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
-                console.log("O WINNN");
-            }else{
-                console.log("Noone win in this move");
-            }
+            // if(vertical  == 3 || horizon == 3 || diago == 3 ){
+            //     console.log("X WINNNN"); 
+            // }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
+            //     console.log("O WINNN");
+            // }else{
+            //     console.log("Noone win in this move");
+            // }
+            whowin(vertical,horizon,diago);
+
     }
     }else if(num == (sizexo**2)-1) {
         //check right bottom conner
@@ -123,19 +130,33 @@ function checkwin(checkboard,num) {
             console.log(horizon);
             
             console.log("diago " + test[i*(sizexo+1)] );
-            diago+=test[i*4];
+            diago+=test[i*(sizexo+1)];
             console.log("Check number   :  " + (i*(sizexo+1)));
             console.log(diago);
 
-            if(vertical  == 3 || horizon == 3 || diago == 3 ){
-                console.log("X WINNNN"); 
-            }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
-                console.log("O WINNN");
-            }else{
-                console.log("Noone win in this move");
-            }
+            // if(vertical  == 3 || horizon == 3 || diago == 3 ){
+            //     console.log("X WINNNN"); 
+            // }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
+            //     console.log("O WINNN");
+            // }else{
+            //     console.log("Noone win in this move");
+            // }
+            whowin(vertical,horizon,diago);
     }
     
+    }
+}
+
+function whowin(vertical,horizon,diago) {
+    if(vertical  == 3 || horizon == 3 || diago == 3 ){
+        console.log("X WINNNN"); 
+        // window.alert("X WINNNN");
+    }else if(vertical  == -3 || horizon == -3 || diago == -3 ) {
+        console.log("O WINNN");
+        // window.alert("O WINNN");
+    }else{
+        console.log("Noone win in this move");
+        // window.alert("Noone win in this move");
     }
 }
     
