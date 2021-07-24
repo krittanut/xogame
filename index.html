@@ -83,7 +83,6 @@
             // board[id] = "X";
             console.log(id[2]);
             updateboard(id[2]) ; 
-            // checkwin(board,id[2]);
             // debug
             // alert(board[id]);
         }
@@ -91,6 +90,7 @@
         function updateboard(id) {
             board[id] = 1;
             alert(board[id]);
+            checkwin(board,id);
             console.log(board);
         }
 

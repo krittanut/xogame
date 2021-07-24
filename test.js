@@ -35,16 +35,16 @@ function checkwin(checkboard,num) {
         // check left top conner 
         for(let i = 0 ; i < sizexo ; i ++) {
             // vertical index 0 
-            console.log("vertical " + test[i] );
-            vertical+=test[i];
+            console.log("vertical " + checkboard[i] );
+            vertical+=checkboard[i];
             console.log(vertical);
             // horizon index  0
-            console.log("horizon " + test[i*sizexo] );
-            horizon+=test[i*3];
+            console.log("horizon " + checkboard[i*sizexo] );
+            horizon+=checkboard[i*3];
             console.log(horizon);
             // 
-            console.log("diago " + test[i*(sizexo+1)] );
-            diago+=test[i*4];
+            console.log("diago " + checkboard[i*(sizexo+1)] );
+            diago+=checkboard[i*4];
             console.log(diago);
 
             // if(vertical  == 3 || horizon == 3 || diago == 3 ){
@@ -62,19 +62,19 @@ function checkwin(checkboard,num) {
         //check left bottom conner
         for(let i = 0; i<sizexo ; i ++) {            
             // console.log(" Check num+i " + (num+i));
-            console.log("vertical " + test[i*sizexo] );
-            vertical+=test[i*sizexo];
+            console.log("vertical " + checkboard[i*sizexo] );
+            vertical+=checkboard[i*sizexo];
             console.log("Check number   :  " + (i*sizexo));
             console.log(vertical);
 
-            console.log("horizon " + test[num+i] );
-            horizon+=test[num+i];
+            console.log("horizon " + checkboard[num+i] );
+            horizon+=checkboard[num+i];
             console.log("Check number   :  " + (num+i) );
             console.log(horizon);
             
             
-            console.log("diago " + test[(i+1)*(sizexo-1)] );
-            diago+=test[(i+1)*(sizexo-1)];
+            console.log("diago " + checkboard[(i+1)*(sizexo-1)] );
+            diago+=checkboard[(i+1)*(sizexo-1)];
             console.log("Check number   :  " + (i+1)*(sizexo-1) );
             console.log(diago);  
 
@@ -92,18 +92,18 @@ function checkwin(checkboard,num) {
     }else if(num == sizexo-1) {
         //check right top conner
         for(let i = 0; i<sizexo ; i ++) {            
-            console.log("vertical " + test[((i+1)*sizexo)-1] );
-            vertical+=test[((i+1)*sizexo)-1];
+            console.log("vertical " + checkboard[((i+1)*sizexo)-1] );
+            vertical+=checkboard[((i+1)*sizexo)-1];
             console.log("Check number   :  " + (((i+1)*sizexo)-1));
             console.log(vertical);
 
-            console.log("horizon " + test[i] );
-            horizon+=test[i];
+            console.log("horizon " + checkboard[i] );
+            horizon+=checkboard[i];
             console.log("Check number   :  " + (i) );
             console.log(horizon);
             
-            console.log("diago " + test[(i+1)*(sizexo-1)] );
-            diago+=test[(i+1)*(sizexo-1)];
+            console.log("diago " + checkboard[(i+1)*(sizexo-1)] );
+            diago+=checkboard[(i+1)*(sizexo-1)];
             console.log("Check number   :  " + (i+1)*(sizexo-1) );
             console.log(diago);  
             // if(vertical  == 3 || horizon == 3 || diago == 3 ){
@@ -119,18 +119,18 @@ function checkwin(checkboard,num) {
     }else if(num == (sizexo**2)-1) {
         //check right bottom conner
         for(let i = 0; i<sizexo ; i ++) {            
-            console.log("vertical " + test[((i+1)*sizexo)-1] );
-            vertical+=test[((i+1)*sizexo)-1];
+            console.log("vertical " + checkboard[((i+1)*sizexo)-1] );
+            vertical+=checkboard[((i+1)*sizexo)-1];
             console.log("Check number   :  " + (((i+1)*sizexo)-1));
             console.log(vertical);
 
-            console.log("horizon " + test[i+(sizexo*(sizexo-1))] );
-            horizon+=test[i+(sizexo*(sizexo-1))];
+            console.log("horizon " + checkboard[i+(sizexo*(sizexo-1))] );
+            horizon+=checkboard[i+(sizexo*(sizexo-1))];
             console.log("Check number   :  " + (i+(sizexo*(sizexo-1))));
             console.log(horizon);
             
-            console.log("diago " + test[i*(sizexo+1)] );
-            diago+=test[i*(sizexo+1)];
+            console.log("diago " + checkboard[i*(sizexo+1)] );
+            diago+=checkboard[i*(sizexo+1)];
             console.log("Check number   :  " + (i*(sizexo+1)));
             console.log(diago);
 
