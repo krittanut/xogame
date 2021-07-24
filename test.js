@@ -2,20 +2,9 @@ const cars = ["Saab", "Volvo", "BMW", "", ""];
 console.log(cars);
 console.log(availableMove(cars));
 
-var sizexo = 3;
+// var sizexo = 3;
 
-function availableMove(board) {
-    var available = []
-    var count = 0;
-    for (let i = 0; i < board.length; i++) {
-        if (board[i] == "") {
-            available[count] = board[i];
-            count++;
-        }
 
-    }
-    return available
-}
 // X == 1
 // O == -1
 // not pick == 0 
@@ -25,7 +14,7 @@ function availableMove(board) {
 
 // checkwin(test,8);
 
-function checkwin(checkboard,num) {
+function checkwin(checkboard,num,sizexo) {
     var vertical = 0;
     var horizon = 0;  
     var diago = 0 ;
