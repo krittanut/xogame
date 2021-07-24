@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<title>Game XO with bot</title>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <!-- <h1>เปลี่ยนขนาด : </h1> -->
+
+</head>
+
+<body class='content'>
+    <div id='first-div'>
+        <div>
+            <label for="num_xo" id="text_num">เปลี่ยนขนาด : </label>
+            <input type="number" id="num_xo" min=3>
+            <button onclick="changeXO()">Change!</button>
+            <!-- <button onclick="cleartable()">Clear!</button> -->
+        </div>
+        <div id='table-div'>
+            <table class='content' id="test">
+            </table>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        var tableGame;
+        var num_size;
+        var board = [];
+
+        function changeXO() {
+            var num_xo = document.getElementById("num_xo").value;
+            // alert(num_xo);
+            if (num_xo == NaN || num_xo < 3) {
+                alert("ใส่ขนาดตารางน้อยไปหรือไม่ได้ใส่ขนาดตาราง");
+            } else {
+                num_size = document.getElementById("num_xo").value;
+                // alert(num_size);
+                addmorerow(num_xo);
+                for(let i = 0 ; i < num_xo**2 ; i++) {
+                    board[i] = "";
+                }
+                // alert(board.length)
+                // alert(board[board.length-1])
+            }
+        }
+        function addmorerow(n) {
+            var tb = document.getElementById('test');
+            tb.innerHTML = "";
+            // alert(n);
+            // var tb = document.createElement('table')
+            var count = 0;
+            for (var a = 0; a < n; a++) {
+                var tr = document.createElement('tr');
+                for (var i = 1; i <= n; i++) {
+                    // alert(n);
+                    count++;
+                    var idtext = "td" + count;
+                    var td = document.createElement('td');
+                    var button = document.createElement('button');
+                    td.setAttribute("id", idtext);
+                    td.setAttribute("onClick", "checkclick(this.id)");
+                    // button.setAttribute('id', idtext);
+                    // button.setAttribute('onClick',"checkclick()")
+                    // button.innerHTML = "Select"
+
+                    // td.appendChild(button);
+                    // td.innerHTML = "test";
+                    tr.appendChild(td);
+                }
+                tb.appendChild(tr);
+            }
+        }
+
+        function checkclick(id) {
+            alert("test");
+            var selectbox = document.getElementById(id);
+            selectbox.innerHTML = "X";
+            board[id] = "X";
+
+            // debug
+            alert(board[id]);
+        }
+
+        function botmove(space) {
+            var move = null ;
+            // for(let i )
+        }
+
+
+    </script>
+</body>
+
+</html>
