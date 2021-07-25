@@ -7,12 +7,16 @@ var test = [ 1, 0, 0, 1,
              1, 1, 1, 1];
 
 // checkwin(test,6,4);
+var test3 = [1,1,1,
+            0,0,0,
+            0,0,0]
 
-var test = [ 1, 0, 0, 1,
-             1, 0, 0, 1,
-             1, 0, 0, 1,
-             1, 1, 1, 1];
-checkwin(test,0,4);
+
+var test4 = [ 1, 1, 1, 1,
+             0, 0, 0, 0,
+             0, 0, 0, 0,
+             0, 0, 0, 0];
+// checkwin(test3,0,3);
 
 function checkwin(checkboard,num,sizexo) {
     var allposible =  allposiblewin(sizexo) ; 
@@ -22,14 +26,21 @@ function checkwin(checkboard,num,sizexo) {
         console.log(allposible[i]);
         for(let b = 0 ; b < sizexo ; b++) {
             // console.log(allposible[i][b]);
+            // console.log(checkboard[allposible[i][b]]);
             count+=checkboard[allposible[i][b]];
         }
-        console.log(count);
-        whowin(count,sizexo);
+        console.log("total  :  " + count);
+        whowin(count,sizexo); 
+        
+        // console.log("seeee   " + whowin(count,sizexo));
+        // if(whowin(count,sizexo) == 'X' ){
+        //     return 1
+        // }
         // console.log(allposible[i]);
     }
 
 }
+
 
 // allposiblewin(5);
 function allposiblewin(sizexo) {
@@ -86,10 +97,11 @@ function allposiblewin(sizexo) {
 
 function whowin(count,sizexo) {
     if(count  == sizexo){
-        console.log("X WINNNN"); 
+        console.log("X"); 
+        return 1 
         // window.alert("X WINNNN");
     }else if(count  == -sizexo) {
-        console.log("O WINNN");
+        console.log("O");
         // window.alert("O WINNN");
     }else{
         console.log("Noone win in this move");

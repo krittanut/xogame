@@ -82,7 +82,8 @@
             selectbox.innerHTML = "X";
             // board[id] = "X";
             console.log(id[2]);
-            updateboard(id[2]) ; 
+            updateboard(parseInt(id[2])) ; 
+            // alert(typeof id[2]);
             // debug
             // alert(board[id]);
         }
@@ -90,7 +91,13 @@
         function updateboard(id) {
             board[id] = 1;
             // alert(board[id]);
-            checkwin(board,id,num_size);
+            
+            checkwining = checkwin(board,id,num_xo);
+            alert(checkwining);
+            if(checkwining == 1) {
+                alert(checkwining);
+            }
+
             // alert(num_size) ;
             console.log(board);
         }
