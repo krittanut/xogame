@@ -1,29 +1,29 @@
 // X == 1
 // O == -1
 // not pick == 0 
-var test = [ 1, 0, 0, 1,
-             1, 0, 0, 1,
-             1, 0, 0, 1,
-             1, 1, 1, 1];
+// var test = [ 1, 0, 0, 1,
+//              1, 0, 0, 1,
+//              1, 0, 0, 1,
+//              1, 1, 1, 1];
 
 // checkwin(test,6,4);
-var test3 = [1,1,1,
-            0,0,0,
-            0,0,0]
+// var test3 = [1,1,1,
+//             0,0,0,
+//             0,0,0]
 
 
-var test4 = [ 1, 1, 1, 1,
-             0, 0, 0, 0,
-             0, 0, 0, 0,
-             0, 0, 0, 0];
+// var test4 = [ 1, 1, 1, 1,
+//              0, 0, 0, 0,
+//              0, 0, 0, 0,
+//              0, 0, 0, 0];
 // checkwin(test3,0,3);
 // console.log("asdsadsa : " + c);
 
 function checkwin(checkboard,num,sizexo) {
-    var allposible =  allposiblewin(sizexo) ; 
+    let allposible =  allposiblewin(sizexo) ; 
     // console.log(allposible);
     for(let i in allposible) {
-        var count = 0;
+        let count = 0;
         console.log(allposible[i]);
         for(let b = 0 ; b < sizexo ; b++) {
             // console.log(allposible[i][b]);
@@ -45,12 +45,12 @@ function checkwin(checkboard,num,sizexo) {
 
 // allposiblewin(5);
 function allposiblewin(sizexo) {
-    var allpossible = []
+    let allpossible = []
     //vertical
     for(let i = 0 ; i < sizexo ; i ++) {
         // console.log(i);
-        var numupdate = i ; 
-        var all = [] 
+        let numupdate = i ; 
+        let all = [] 
         for(let b = 0 ; b <sizexo ; b++) {
             // console.log(numupdate );
             all[b] = numupdate; 
@@ -63,7 +63,7 @@ function allposiblewin(sizexo) {
 
     // horizon 
     for(let i = 0 ; i <sizexo ; i++) {
-        var all = [] 
+        let all = [] 
         for(let b = 0 ; b < sizexo ; b++) {
             // console.log(b + (sizexo * i));
             all.push(b + (sizexo * i));
@@ -74,9 +74,9 @@ function allposiblewin(sizexo) {
     // console.log(allpossible);
     //diago 
     for(let i = 0 ; i < 2 ; i++) {
-        var all = [] ;
+        let all = [] ;
         if(i != 0 ) {
-            var diago1 = sizexo-1;
+            let diago1 = sizexo-1;
         }
         for (let b = 0 ; b < sizexo ;b ++) {
             if ( i == 0 ) {

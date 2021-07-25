@@ -26,12 +26,12 @@
 
 
     <script>
-        var tableGame;
-        var num_size;
-        var board = [];
+        let tableGame;
+        let num_size;
+        let board = [];
 
         function changeXO() {
-            var num_xo = document.getElementById("num_xo").value;
+            let num_xo = document.getElementById("num_xo").value;
             // alert(num_xo);
             if (num_xo == NaN || num_xo < 3) {
                 alert("ใส่ขนาดตารางน้อยไปหรือไม่ได้ใส่ขนาดตาราง");
@@ -47,19 +47,19 @@
             }
         }
         function addmorerow(n) {
-            var tb = document.getElementById('test');
+            let tb = document.getElementById('test');
             tb.innerHTML = "";
             // alert(n);
             // var tb = document.createElement('table')
-            var count = -1;
-            for (var a = 0; a < n; a++) {
-                var tr = document.createElement('tr');
-                for (var i = 1; i <= n; i++) {
+            let count = -1;
+            for (let a = 0; a < n; a++) {
+                let tr = document.createElement('tr');
+                for (let i = 1; i <= n; i++) {
                     // alert(n);
                     count++;
-                    var idtext = "td" + count;
-                    var td = document.createElement('td');
-                    var button = document.createElement('button');
+                    let idtext = "td" + count;
+                    let td = document.createElement('td');
+                    let button = document.createElement('button');
                     td.setAttribute("id", idtext);
                     td.setAttribute("onClick", "checkclick(this.id)");
                     // button.setAttribute('id', idtext);
@@ -76,13 +76,13 @@
 
         function checkclick(id) {
             // alert("test");
-            var textid = id ; 
-            var selectbox = document.getElementById(id);
+            let textid = id ; 
+            let selectbox = document.getElementById(id);
             // alert(parseInt(textid.slice(2)));
             selectbox.innerHTML = "X";
             // board[id] = "X";
 
-            // console.log(parseInt(textid.slice(2)));
+            console.log(parseInt(textid.slice(2)));
             updateboard(parseInt(textid.slice(2))) ; 
 
         }
@@ -97,6 +97,8 @@
         }
 
 
+
+        // alert(checkwin(test,8)) ; 
     </script>
 </body>
 
