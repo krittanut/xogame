@@ -17,6 +17,7 @@ var test4 = [ 1, 1, 1, 1,
              0, 0, 0, 0,
              0, 0, 0, 0];
 // checkwin(test3,0,3);
+// console.log("asdsadsa : " + c);
 
 function checkwin(checkboard,num,sizexo) {
     var allposible =  allposiblewin(sizexo) ; 
@@ -30,13 +31,13 @@ function checkwin(checkboard,num,sizexo) {
             count+=checkboard[allposible[i][b]];
         }
         console.log("total  :  " + count);
-        whowin(count,sizexo); 
+        // whowin(count,sizexo); 
+        if(whowin(count,sizexo) == 1 ){
+            console.log("You win ! ");
+            return 1 
+        }
+        // console.log("return : " + whowin(count,sizexo));
         
-        // console.log("seeee   " + whowin(count,sizexo));
-        // if(whowin(count,sizexo) == 'X' ){
-        //     return 1
-        // }
-        // console.log(allposible[i]);
     }
 
 }
@@ -97,11 +98,11 @@ function allposiblewin(sizexo) {
 
 function whowin(count,sizexo) {
     if(count  == sizexo){
-        console.log("X"); 
-        return 1 
+        console.log("X WINNN"); 
         // window.alert("X WINNNN");
+        return 1 
     }else if(count  == -sizexo) {
-        console.log("O");
+        console.log("O WINNN");
         // window.alert("O WINNN");
     }else{
         console.log("Noone win in this move");

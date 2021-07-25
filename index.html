@@ -78,11 +78,12 @@
             // alert("test");
             var textid = id ; 
             var selectbox = document.getElementById(id);
-            // alert(id);
+            // alert(parseInt(textid.slice(2)));
             selectbox.innerHTML = "X";
             // board[id] = "X";
-            console.log(id[2]);
-            updateboard(parseInt(id[2])) ; 
+
+            console.log(parseInt(textid.slice(2)));
+            updateboard(parseInt(textid.slice(2))) ; 
             // alert(typeof id[2]);
             // debug
             // alert(board[id]);
@@ -90,14 +91,10 @@
 
         function updateboard(id) {
             board[id] = 1;
-            // alert(board[id]);
-            
-            checkwining = checkwin(board,id,num_xo);
-            alert(checkwining);
-            if(checkwining == 1) {
-                alert(checkwining);
-            }
 
+            if(checkwin(board,id,parseInt(num_size)) == 1) [
+                alert("You win!")
+            ]
             // alert(num_size) ;
             console.log(board);
         }
