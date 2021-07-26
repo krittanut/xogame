@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- <h1>เปลี่ยนขนาด : </h1> -->
     <script src = "test.js" ></script>
-    <script src = "bot.js" ></script>
+    <!-- <script src = "bot.js" ></script> -->
 </head>
 
 <body class='content'>
@@ -29,7 +29,7 @@
     <script>
         let tableGame;
         let num_size;
-        let board = [];
+        var board = [];
 
         function changeXO() {
             let num_xo = document.getElementById("num_xo").value;
@@ -83,18 +83,30 @@
             // alert(parseInt(textid.slice(2)));
             selectbox.innerHTML = "X";
             // board[id] = "X";
-
-            console.log(parseInt(textid.slice(2)));
+            board[parseInt(textid.slice(2))] = 1;
+            // console.log(parseInt(textid.slice(2)));
             updateboard(parseInt(textid.slice(2))) ; 
 
         }
 
         function updateboard(id) {
-            board[id] = 1;
-            letbotmove(id,num_size); 
-            if(checkwin(board,id,num_size) == 1) [
-                alert("You win!")
-            ]
+            // board[id] = 1;
+            if(possiblemove(board,num_size).length==0){
+                alert("Tie");
+            } else {
+                let move = minimax(board,num_size,-1);
+                board[move.index] = -1;
+                let text_id = 'td'+move.index;
+                let botselect = document.getElementById(text_id);
+                botselect.innerHTML = "O";
+                if(checkwin(board,num_size) == 1) {
+                    alert("You win!");
+                }else if(checkwin(board,num_size) == -1) {
+                    alert("You Lose !");
+                }
+            }
+
+
             console.log(board);
         }
 

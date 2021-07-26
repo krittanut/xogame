@@ -17,6 +17,7 @@ var test4 = [ 1, 1, 1, 1,
              0, 0, 0, 0,
              0, 0, 0, 0,
              0, 0, 0, 0];
+// checkwin(test4,4);
 // console.log(checkwin(test4,4));
 // console.log("asdsadsa : " + c);
 
@@ -107,6 +108,7 @@ function whowin(count,sizexo) {
     if(count  == sizexo){
         // console.log("X WINNN"); 
         // window.alert("X WINNNN");
+        // console.log("count : " + count);
         return 1 
     }else if(count  == -sizexo) {
         // console.log("O WINNN");
@@ -121,9 +123,9 @@ function whowin(count,sizexo) {
 }
 
 
-let testtt = [1,0,0,
-              1,0,0,
-              0,0,0 ];
+// let testtt = [1,0,0,
+//               1,0,0,
+//               0,0,0 ];
 
 // possiblemove(testtt,3);
 
@@ -202,26 +204,17 @@ function minimax(currentboard,sizexo,player) {
                 }
             }
         }
-    // console.log(currentboard);
-    // minimax(currentboard,sizexo,possiblemove(currentboard,3)[0])
-    // console.log(moves[bestMove]);
-    // console.log(moves[bestMove]);
-    // console.log(bestScore);
+
     return moves[bestMove]
 }
 
-test10  =   [1, 1, 1, 0,
-             0, 0, -1, -1,
+test10  =   [1, 0, 0, 0,
+             0, 0, 0, 0,
              0, 0, 0, 0,
              0, 0, 0, 0] 
 
 // test11 = [1, 1, -1,
 //           0, 0, -1,
 //           0, 0, 1]
-t = minimax(test10,4,-1);
-console.log(t);
+// t = minimax(test10,4,-1);
 // console.log(t);
-
-// console.log(possiblemove(test10,3));
-
-// console.log(possiblemove(test10,3).length);
