@@ -10,17 +10,19 @@
 // var test3 = [1,1,1,
 //             0,0,0,
 //             0,0,0]
+let human = 1;
+let com = -1;
 
-
-// var test4 = [ 1, 1, 1, 1,
-//              0, 0, 0, 0,
-//              0, 0, 0, 0,
-//              0, 0, 0, 0];
-// checkwin(test3,0,3);
+var test4 = [ 1, 1, 1, 1,
+             0, 0, 0, 0,
+             0, 0, 0, 0,
+             0, 0, 0, 0];
+// console.log(checkwin(test4,4));
 // console.log("asdsadsa : " + c);
 
 function checkwin(checkboard,sizexo) {
-    let allposible =  allposiblewin(sizexo) ; 
+    let allposible =  allposiblewin(sizexo) ;
+    // console.log(allposible); 
     // console.log(allposible);
     for(let i in allposible) {
         let count = 0;
@@ -28,18 +30,19 @@ function checkwin(checkboard,sizexo) {
         for(let b = 0 ; b < sizexo ; b++) {
             // console.log(allposible[i][b]);
             // console.log(checkboard[allposible[i][b]]);
-            count+=checkboard[allposible[i][b]];
+            count+=checkboard[parseInt(allposible[i][b])];
         }
         // console.log("total  :  " + count);
         // whowin(count,sizexo); 
         if(whowin(count,sizexo) == 1 ){
-            console.log("You win ! ");
+            // console.log("You win ! ");
             return 1 
         }else if(whowin(count,sizexo) == -1 ){
             return -1 
-        }else {
-            return 0
         }
+        // else {
+        //     return 0
+        // }
         // console.log("return : " + whowin(count,sizexo));
         
     }
@@ -109,18 +112,14 @@ function whowin(count,sizexo) {
         // console.log("O WINNN");
         // window.alert("O WINNN");
         return -1
-    }else{
-        // console.log("Noone win in this move");
-        return 0 
-        // window.alert("Noone win in this move");
-    }
+     }
+    // else{
+    //     // console.log("Noone win in this move");
+    //     return 0 
+    //     // window.alert("Noone win in this move");
+    // }
 }
 
-
-
-function letbotmove(board,sizexo) {
-    possiblemove(board,sizexo) ;
-}
 
 let testtt = [1,0,0,
               1,0,0,
@@ -138,64 +137,91 @@ function possiblemove(board,sizexo) {
         // console.log("Board : " +  board[i]);
          
     }
-    console.log(space) ;
+    // console.log(space) ;
     // botselecet(board,sizexo,space) ;
     return space 
 }
 
-function botselecet(currentboard,sizexo,space) {
-    const state = 0 ; 
-    const depth = 0 ; 
-    const scoreeachcase = 0 ; 
-    const finish = true;
-    const aiboard = [] ; 
-    for(let i = 0 ; i < space.length ; i++ ) {
-        // console.log(space[i]);
-        // while(finish) {
-        //     currentboard
-        // }
-    }
-}   
 
-let lose_final = -100; 
-let win_final = 100;
-let draw_final = 0;
 
-// let s = possiblemove(testtt,3);
-// console.log(s);
-// minimax(testtt,3,s);
+
+
 
 let depth = 0 ; 
-var score = 100 ;
+// var score = 100 ;
 //calculate one case 
-function minimax(currentboard,sizexo,player = "ai") {
-    if(checkwin(currentboard,sizexo) == -1) {
-        return score = 10 ;
-    }else if(checkwin(currentboard,sizexo) == 1) {
-        return score = -10;
-    }else if(checkwin(currentboard,sizexo) == 0){
-        return score  = 0;
+function minimax(currentboard,sizexo,player) {
+    let ar = possiblemove(currentboard,sizexo)
+    // console.log(currentboard);
+    if(checkwin(currentboard,sizexo) == com) {
+        // console.log('win');
+        return {score :  10 };
+    }else if(checkwin(currentboard,sizexo) == human) {
+        return {score : -10};
     }
-    let moves =  [] ; 
-    for(let i = 0 ; i < possiblemove(currentboard,3).length ; i++) {
-        var move = {};
-        move.index = possiblemove(currentboard,3)[i];
-        if(player == 'ai') {
-            possiblemove(currentboard,3)[i] = -1 ;
-        }else {
-            possiblemove(currentboard,3)[i] = 1; 
-        }
+    else if(ar.length == 0){
+        // console.log("test");
+        return {score : 0};
+    }
+    var moves =  [] ; 
+    // console.log("check");
     
+    for(var i = 0 ; i < ar.length ; i++) {
+        var move = {};
+        move.index = ar[i];
+        // console.log("first : " + move.index);
+        currentboard[ar[i]] = player; 
+        if(player == com) {
+            var result = minimax(currentboard,sizexo,human);
+            move.score = result.score ; 
+        }else{
+            var result = minimax(currentboard,sizexo,com);
+            move.score = result.score ; 
+        }
+        
+        
+        currentboard[ar[i]] = 0 ; 
+        // console.log("Secound : " + move.index);
+        moves.push(move) ;
     }
-    minimax(currentboard,sizexo,possiblemove(currentboard,3)[0])
-
+        var bestMove; 
+        if(player === com) {
+            var bestScore = -10000; 
+            for(var i = 0 ;i < moves.length; i++) {
+                if(moves[i].score > bestScore) {
+                    bestScore = moves[i].score;
+                    bestMove = i ;
+                }
+            }
+        }else{
+            var bestScore = 10000;
+            for(var i = 0 ; i<moves.length;i++) {
+                if(moves[i].score < bestScore) {
+                    bestScore = moves[i].score; 
+                    bestMove = i ;
+                }
+            }
+        }
+    // console.log(currentboard);
+    // minimax(currentboard,sizexo,possiblemove(currentboard,3)[0])
+    // console.log(moves[bestMove]);
+    // console.log(moves[bestMove]);
+    // console.log(bestScore);
+    return moves[bestMove]
 }
 
-test10  = [1,0,0,
-            0,0,0,
-            0,0,0] 
-minimax(test10,3,possiblemove(test10,3)[0]);
+test10  =   [1, 1, 1, 0,
+             0, 0, -1, -1,
+             0, 0, 0, 0,
+             0, 0, 0, 0] 
+
+// test11 = [1, 1, -1,
+//           0, 0, -1,
+//           0, 0, 1]
+t = minimax(test10,4,-1);
+console.log(t);
+// console.log(t);
+
 // console.log(possiblemove(test10,3));
 
 // console.log(possiblemove(test10,3).length);
-    
