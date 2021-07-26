@@ -2,7 +2,7 @@
 <html>
 <title>Game XO with bot</title>
 
-<head>
+<head >
     <link rel="stylesheet" href="style.css">
     <!-- <h1>เปลี่ยนขนาด : </h1> -->
     <script src = "test.js" ></script>
