@@ -22,7 +22,7 @@
             </table>
         </div>
 
-    </div>
+</div>
 
 
 
@@ -93,6 +93,7 @@
             // board[id] = 1;
             if(possiblemove(board,num_size).length==0){
                 alert("Tie");
+                changeXO();
             } else {
                 let move = minimax(board,num_size,-1);
                 board[move.index] = -1;
@@ -101,8 +102,10 @@
                 botselect.innerHTML = "O";
                 if(checkwin(board,num_size) == 1) {
                     alert("You win!");
+                    changeXO();
                 }else if(checkwin(board,num_size) == -1) {
                     alert("You Lose !");
+                    changeXO();
                 }
             }
 
@@ -112,7 +115,6 @@
 
 
 
-        // alert(checkwin(test,8)) ; 
     </script>
 </body>
 
