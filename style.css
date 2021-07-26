@@ -20,11 +20,11 @@ button {
   cursor:pointer;
 }
 
-table {
+#test {
   border-collapse: collapse;
   border-style: hidden;
 }
-table td {
+.idgame {
   font-family: "Prompt";
   border: 4px solid black;
   text-align: center;
@@ -40,8 +40,13 @@ table td {
 
 #first-div {
     padding-top: 20%;
+    padding-bottom: 10%;
 }
 
 #table-div {
     padding-top: 50px;
+}
+
+#sec-div{
+  font-size:small;
 }

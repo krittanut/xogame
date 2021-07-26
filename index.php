@@ -3,6 +3,7 @@
 <title>Game XO with bot</title>
 
 <head >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <!-- <h1>เปลี่ยนขนาด : </h1> -->
     <script src = "test.js" ></script>
@@ -14,7 +15,7 @@
         <div>
             <label for="num_xo" id="text_num">เปลี่ยนขนาด : </label>
             <input type="number" id="num_xo" min=3>
-            <button onclick="changeXO()">Change!</button>
+            <button onclick="changeXO()" id="play">Change!</button>
             <!-- <button onclick="cleartable()">Clear!</button> -->
         </div>
         <div id='table-div'>
@@ -22,7 +23,38 @@
             </table>
         </div>
 
-</div>
+    </div>
+    <div id='sec-div'>
+    <table class="table">
+  <thead class="thead-dark">
+    <tr >
+      <th scope="col"></th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="alert('test')" class="table-active">
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr class="table-active">
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr class="table-active">
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
 
 
 
@@ -64,6 +96,7 @@
                     let button = document.createElement('button');
                     td.setAttribute("id", idtext);
                     td.setAttribute("onClick", "checkclick(this.id)");
+                    td.setAttribute('class','idgame');
                     // button.setAttribute('id', idtext);
                     // button.setAttribute('onClick',"checkclick()")
                     // button.innerHTML = "Select"
@@ -82,37 +115,44 @@
             let selectbox = document.getElementById(id);
             // alert(parseInt(textid.slice(2)));
             selectbox.innerHTML = "X";
+            selectbox.setAttribute("OnClick","");
+            // sleep(1000);
             // board[id] = "X";
             board[parseInt(textid.slice(2))] = 1;
             // console.log(parseInt(textid.slice(2)));
             updateboard(parseInt(textid.slice(2))) ; 
 
         }
+        
 
         function updateboard(id) {
             // board[id] = 1;
             if(possiblemove(board,num_size).length==0){
                 alert("Tie");
-                changeXO();
+                changetext();
             } else {
                 let move = minimax(board,num_size,-1);
                 board[move.index] = -1;
                 let text_id = 'td'+move.index;
                 let botselect = document.getElementById(text_id);
                 botselect.innerHTML = "O";
+                botselect.setAttribute("OnClick","");
                 if(checkwin(board,num_size) == 1) {
                     alert("You win!");
-                    changeXO();
+                    changetext();
                 }else if(checkwin(board,num_size) == -1) {
                     alert("You Lose !");
-                    changeXO();
+                    changetext();
                 }
             }
 
 
-            console.log(board);
         }
 
+        function changetext(){
+            document.getElementById('play').innerHTML = "Play More !";
+            console.log(board); 
+        }
 
 
     </script>

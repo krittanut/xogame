@@ -1,15 +1,7 @@
 // X == 1
 // O == -1
 // not pick == 0 
-// var test = [ 1, 0, 0, 1,
-//              1, 0, 0, 1,
-//              1, 0, 0, 1,
-//              1, 1, 1, 1];
 
-// checkwin(test,6,4);
-// var test3 = [1,1,1,
-//             0,0,0,
-//             0,0,0]
 let human = 1;
 let com = -1;
 
@@ -28,7 +20,9 @@ function checkwin(checkboard,sizexo) {
     for(let i in allposible) {
         let count = 0;
         // console.log(allposible[i]);
+        let match = [];
         for(let b = 0 ; b < sizexo ; b++) {
+            match.push(allposible[i][b]);
             // console.log(allposible[i][b]);
             // console.log(checkboard[allposible[i][b]]);
             count+=checkboard[parseInt(allposible[i][b])];
