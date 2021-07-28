@@ -12,12 +12,12 @@ clone project in folder where you install\xampp\htdocs\
 # Run project 
 open xampp control panel and start Apache and MySQL
 
-![Xampp Control Panel](/image/xampp_control.png)
+![Xampp Control Panel](/image/xampp_control.PNG)
 click admin in MySQL go to import and upload xogame.sql 
 
 # Play 
 open http://localhost/xogame/ to play tic tac toe with bot 
-![Game](/image/game.png)
+![Game](/image/game.PNG)
 You can see the replay when you click row in data table  
 
 # Design 
