@@ -3,6 +3,7 @@ tic tac toe game web app play with bot
 
 # Installation 
 ![Xampp Logo](/image/xampp_logo.png)
+
 Download Xampp version 8.0.8
 [Link to download Xampp] : https://www.apachefriends.org/download.html
 
