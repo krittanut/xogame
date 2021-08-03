@@ -2,25 +2,27 @@
 <html>
 <title>Game XO with bot</title>
 
-<head >
+<head>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src = "test.js" ></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="test.js"></script>
 </head>
 
 
 <body class='content'>
     <div id='first-div'>
         <div>
-            <label for="num_xo" id="text_num">Table Size : </label>
-            <input type="number" id="num_xo" min=3>
-            <button onclick="changeXO()" id="play">Change!</button>
+            <label for="num_xo" id="text_num">Tic Tac Toe : </label>
+            <input type="number" id="num_xo" min=3 value=3>
+
+            <button onclick="changeXO()" id="play">Start!</button>
         </div>
         <div id='table-div'>
             <table class='content' id="test">
             </table>
         </div>
-        <div id="div-replay" >
+        <div id="div-replay">
 
         </div>
 
@@ -30,21 +32,23 @@
         let tableGame;
         let num_size;
         var board = [];
-        let change ; 
-        let changetxt ;
-        let win ; 
+        let change;
+        let changetxt;
+        let win;
 
         function changeXO() {
             let num_xo = document.getElementById("num_xo").value;
+            // let num_xo = 3;
+            // let num_size = 3;
             if (num_xo == NaN || num_xo < 3) {
-                alert("ใส่ขนาดตารางน้อยไปหรือไม่ได้ใส่ขนาดตาราง");
+                alert("Only 3 * 3 ");
             } else {
                 num_size = document.getElementById("num_xo").value;
                 num_size = parseInt(num_size);
-                change = [] ;
+                change = [];
                 changetxt = '';
                 addmorerow(num_xo);
-                for(let i = 0 ; i < num_xo**2 ; i++) {
+                for (let i = 0; i < num_xo ** 2; i++) {
                     board[i] = 0;
                 }
             }
@@ -63,58 +67,58 @@
                     let button = document.createElement('button');
                     td.setAttribute("id", idtext);
                     td.setAttribute("onClick", "checkclick(this.id)");
-                    td.setAttribute('class','idgame');
+                    td.setAttribute('class', 'idgame');
                     tr.appendChild(td);
                 }
                 tb.appendChild(tr);
             }
-            round = 0 ;
+            round = 0;
         }
         function checkclick(id) {
-            let textid = id ; 
+            let textid = id;
             let selectbox = document.getElementById(id);
 
             selectbox.innerHTML = "X";
             selectbox.style.color = 'blue';
-            selectbox.setAttribute("OnClick","");
-            change.push(parseInt(textid.slice(2))); 
-            changetxt = changetxt  +parseInt(textid.slice(2)) + ",";
+            selectbox.setAttribute("OnClick", "");
+            change.push(parseInt(textid.slice(2)));
+            changetxt = changetxt + parseInt(textid.slice(2)) + ",";
             board[parseInt(textid.slice(2))] = 1;
-            updateboard(parseInt(textid.slice(2))) ; 
+            updateboard(parseInt(textid.slice(2)));
 
         }
-        
+
 
         function updateboard(id) {
             // gameover insert data 
-            if(possiblemove(board,num_size).length==0){
+            if (possiblemove(board, num_size).length == 0) {
                 alert("Tie");
                 changetext();
-                win = 0;
-                window.open("http://localhost/xogame/insert.php?win="+win+"&move="+changetxt+"&size="+num_size);
-                window.location.reload();
+                // win = 0;
+                // window.open("http://localhost/xogame/insert.php?win="+win+"&move="+changetxt+"&size="+num_size);
+                // window.location.reload();
             } else {
-                let move = minimax(board,num_size,-1);
+                let move = minimax(board, num_size, -1);
                 board[move.index] = -1;
-                let text_id = 'td'+move.index;
+                let text_id = 'td' + move.index;
                 let botselect = document.getElementById(text_id);
                 botselect.innerHTML = "O";
                 botselect.style.color = 'red';
-                botselect.setAttribute("OnClick","");
-                change.push(move.index); 
-                changetxt = changetxt  + move.index + ",";
-                if(checkwin(board,num_size) == 1) {
+                botselect.setAttribute("OnClick", "");
+                change.push(move.index);
+                changetxt = changetxt + move.index + ",";
+                if (checkwin(board, num_size) == 1) {
                     alert("You win!");
-                    win = 1 ; 
+                    win = 1;
                     changetext();
-                    window.open("http://localhost/xogame/insert.php?win="+win+"&move="+changetxt+"&size="+num_size);
-                    window.location.reload();
-                }else if(checkwin(board,num_size) == -1) {
+                    // window.open("http://localhost/xogame/insert.php?win="+win+"&move="+changetxt+"&size="+num_size);
+                    // window.location.reload();
+                } else if (checkwin(board, num_size) == -1) {
                     alert("You Lose !");
                     changetext();
-                    win = -1 ;
-                    window.open("http://localhost/xogame/insert.php?win="+win+"&move="+changetxt+"&size="+num_size);
-                    window.location.reload();
+                    // win = -1 ;
+                    // window.open("http://localhost/xogame/insert.php?win="+win+"&move="+changetxt+"&size="+num_size);
+                    // window.location.reload();
                 }
             }
             console.log(change);
@@ -122,25 +126,25 @@
 
         }
 
-        function changetext(){
+        function changetext() {
             document.getElementById('play').innerHTML = "Play More !";
-            console.log(board); 
+            console.log(board);
         }
     </script>
 
 
-         
-    <div id='sec-div'>
-    <table class="table" id="data-table">
-  <thead class="thead-dark">
-    <tr >
-      <th scope="col">id</th>
-      <th scope="col">whowin</th>
-      <th scope="col">size</th>
-      <th scope="col">move</th>
-    </tr>
-  </thead>
-        <?php 
+
+    <!-- <div id='sec-div'>
+        <table class="table" id="data-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">whowin</th>
+                    <th scope="col">size</th>
+                    <th scope="col">move</th>
+                </tr>
+            </thead>
+            <?php 
         $servername = 'localhost';
         $username = 'root';
         $password = '';
@@ -177,53 +181,53 @@
         
         }
         ?>
-    </table>
-    </div>
+        </table>
+    </div> -->
 
 
     <script>
         // create data in replay table and set id 
-        let numTr = document.getElementById('data-table').getElementsByTagName('tr').length-1;
-        for(let i = 0 ; i<numTr ; i++ ){
-            let p = document.getElementById('row'+(i+1));
-            p.setAttribute('onclick','replaydelay(this.id)');
-        }
+        // let numTr = document.getElementById('data-table').getElementsByTagName('tr').length - 1;
+        // for (let i = 0; i < numTr; i++) {
+        //     let p = document.getElementById('row' + (i + 1));
+        //     // p.setAttribute('onclick','replaydelay(this.id)');
+        // }
 
 
-        function replay(id){
+        function replay(id) {
             let test = document.getElementById(id);
             let size_table = test.children[2].innerHTML;
             let str_move = test.children[3].innerHTML.split(",");
             addmorerow(size_table);
-            let ss = 0; 
+            let ss = 0;
             str_move.pop();
             console.log(test.children[2].innerHTML);
             console.log(str_move);
-            return str_move     
+            return str_move
         }
-        function replaydelay(id) {            
+        function replaydelay(id) {
             let re = replay(id);
-            
-            for(let i = 0 ; i < re.length ; i++) {
-                let id = "td" + re[i] ;
-                  if(i%2== 1) {
+
+            for (let i = 0; i < re.length; i++) {
+                let id = "td" + re[i];
+                if (i % 2 == 1) {
                     console.log("check : " + i);
-                    changereplay(id,'O',i);
-                }else{
-                    changereplay(id,'X',i);
-                }              
+                    changereplay(id, 'O', i);
+                } else {
+                    changereplay(id, 'X', i);
+                }
             }
         }
 
-        function changereplay(id,player,i) {
+        function changereplay(id, player, i) {
             //delay 1 s 
-            setTimeout(function() {
-            document.getElementById(id).innerHTML = player; 
-            if(player == 'X') {
-                document.getElementById(id).style.color = 'blue'; 
-            }else{
-                document.getElementById(id).style.color = 'red'; 
-            }
+            setTimeout(function () {
+                document.getElementById(id).innerHTML = player;
+                if (player == 'X') {
+                    document.getElementById(id).style.color = 'blue';
+                } else {
+                    document.getElementById(id).style.color = 'red';
+                }
             }, 1000 * i);
         }
 
