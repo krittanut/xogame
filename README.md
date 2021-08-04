@@ -26,4 +26,8 @@ I use minimax Algorithm to find best move for bot that calculate all possible in
 but in table which is more than size 3*3. It take a lot of time to calculate all possible and select the best one .
 
 
+# Test in heroku with 3 x 3 
+https://play-xogame.herokuapp.com/
+
+
 
